@@ -59,7 +59,7 @@ jobs:
       run: echo "Build Success"
   
   pull:
-    name: Image pulling ${{ runner.name }}
+    name: Image pulling 
     runs-on: [self-hosted]
     needs: [ build ]
     environment: dev
