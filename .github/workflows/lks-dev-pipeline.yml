@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - "dev"
-      
+
 env:
   AWS_REGION: us-east-1                 
   ECR_REPOSITORY: lks-voting-image
@@ -18,7 +18,7 @@ jobs:
   build:
     name: Build Dev Image
     runs-on: ubuntu-latest
-    environment: Development
+    environment: dev
     steps:
     - name: Checkout
       uses: actions/checkout@v3
