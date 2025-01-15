@@ -23,7 +23,7 @@ jobs:
 
     - name: Update Docker
       run: |
-        sudo apt install docker -y
+        sudo apt install docker.io -y
 
     - name: Checkout
       uses: actions/checkout@v3
