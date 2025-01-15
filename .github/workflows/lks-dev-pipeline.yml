@@ -4,10 +4,7 @@ on:
   push:
     branches:
       - "dev"
-    paths:
-      - .github/workflows/lks-dev-pipeline.yaml
-      - "worker/**"
-
+      
 env:
   AWS_REGION: us-east-1                 
   ECR_REPOSITORY: lks-voting-image
