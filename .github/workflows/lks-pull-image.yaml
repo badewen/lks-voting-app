@@ -6,9 +6,11 @@ on:
         type: string  
       environment:
         required: true
-        type: string  
-
+        type: string
     
+env: 
+  AWS_REGION: us-east-1 
+
 jobs:
   pull:
     runs-on: ${{ inputs.runner-name }}
@@ -37,9 +39,9 @@ jobs:
         id: pull-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          WORKER_IMAGE_TAG: worker-${{ env.ENV }}-latest
-          VOTE_IMAGE_TAG: vote-${{ env.ENV }}-latest
-          RESULT_IMAGE_TAG: result-${{ env.ENV }}-latest
+          WORKER_IMAGE_TAG: worker-${{ inputs.environment }}-latest
+          VOTE_IMAGE_TAG: vote-${{ inputs.environment }}-latest
+          RESULT_IMAGE_TAG: result-${{ inputs.environment }}-latest
 
         run: |
           docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG   
