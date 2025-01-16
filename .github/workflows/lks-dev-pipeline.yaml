@@ -18,7 +18,7 @@ jobs:
   build:
     name: Build Dev Image
     runs-on: ubuntu-latest
-    environment: dev
+    environment: Development
     steps:
 
     - name: Checkout
@@ -57,50 +57,34 @@ jobs:
 
     - name: End Build
       run: echo "Build Success"
-  
+
   node1:
-    name: TEST
-    environment: dev
-    runs-on: self-hosted
-    steps:
-    - name: HELLO WORLD
-      run: |
-        echo hell world
+    name: Pulling image on node1
+    secrets: inherit
+    needs: [ build ]
+    uses: ./.github/workflows/lks-pull-image.yaml
+    with:
+      runner-name: node1
+      environment: Development
 
-  # pull:
-  #   name: Pulling image on node1
-  #   runs-on: node1
-  #   needs: [ build ]
-  #   environment: dev
-  #   steps: 
-  #     - name: Update runner's docker Version, as worker module requires it
-  #       run: |
-  #         docker --version
+  node2:
+    name: Pulling image on node2
+    secrets: inherit
+    needs: [ build ]
+    uses: ./.github/workflows/lks-pull-image.yaml
+    with:
+      runner-name: node2
+      environment: Development
 
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+  master:
+    name: Pulling image on master
+    secrets: inherit
+    needs: [ build ]
+    uses: ./.github/workflows/lks-pull-image.yaml
+    with:
+      runner-name: master
+      environment: Development
 
-  #     - name: Configure AWS Credentials
-  #       uses: aws-actions/configure-aws-credentials@v1
-  #       with:
-  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-  #         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
-  #         aws-region: ${{ env.AWS_REGION }}
-          
-  #     - name: Login to Amazon ECR
-  #       id: login-ecr
-  #       uses: aws-actions/amazon-ecr-login@v1
-  
-  #     - name: Pull image
-  #       id: pull-image
-  #       env:
-  #         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-  #         ECR_REPOSITORY: voting-app
-  #         WORKER_IMAGE_TAG: worker-${{ env.ENV }}-latest
-  #       # Build docker images for vote module and push it to ECR so that it can be deployed to EKS
-  #       run: |
-  #         docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG   
 
   # pull2:
   #   name: Pulling image on node2
