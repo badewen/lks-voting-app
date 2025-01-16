@@ -61,7 +61,7 @@ jobs:
   node1:
     name: TEST
     environment: dev
-    runs-on: node1
+    runs-on: self-hosted
     steps:
     - name: HELLO WORLD
       run: |
