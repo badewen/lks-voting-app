@@ -18,7 +18,7 @@ jobs:
   build:
     name: Build Dev Image
     runs-on: ubuntu-latest
-    environment: Development
+    environment: dev
     steps:
 
     - name: Checkout
@@ -65,7 +65,7 @@ jobs:
     uses: ./.github/workflows/lks-pull-image.yaml
     with:
       runner-name: node1
-      environment: Development
+      environment: dev
 
   node2:
     name: Pulling image on node2
@@ -74,7 +74,7 @@ jobs:
     uses: ./.github/workflows/lks-pull-image.yaml
     with:
       runner-name: node2
-      environment: Development
+      environment: dev
 
   master:
     name: Pulling image on master
@@ -83,7 +83,7 @@ jobs:
     uses: ./.github/workflows/lks-pull-image.yaml
     with:
       runner-name: master
-      environment: Development
+      environment: dev
 
 
   # pull2:
