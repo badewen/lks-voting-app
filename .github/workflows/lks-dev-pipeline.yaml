@@ -78,12 +78,41 @@ jobs:
 
   master:
     name: Pulling image on master
-    secrets: inherit
     needs: [ build ]
-    uses: ./.github/workflows/lks-pull-image.yaml
-    with:
-      runner-name: master
-      environment: dev
+    runs-on: master
+    environment: dev
+    steps:
+      - name: Update runner's docker Version, as worker module requires it
+        run: |
+          docker --version
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: ${{ env.AWS_REGION }}
+          
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1 
+  
+      - name: Pull image
+        id: pull-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          WORKER_IMAGE_TAG: worker-${{ env.ENV }}-latest
+          VOTE_IMAGE_TAG: vote-${{ env.ENV }}-latest
+          RESULT_IMAGE_TAG: result-${{ env.ENV }}-latest
+
+        run: |
+          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG
+          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$VOTE_IMAGE_TAG
+          docker pull $ECR_REGISTRY/$ECR_REPOSITORY:$RESULT_IMAGE_TAG
 
 
   # pull2:
