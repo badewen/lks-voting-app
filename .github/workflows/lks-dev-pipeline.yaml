@@ -60,7 +60,7 @@ jobs:
 
   node1:
     name: Pulling image on node1
-    secrets: inherit
+    secrets: inherit 
     # needs: [ build ]
     uses: ./.github/workflows/lks-pull-image.yaml
     with:
