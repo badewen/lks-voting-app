@@ -61,7 +61,7 @@ jobs:
   node1:
     name: Pulling image on node1
     secrets: inherit
-    needs: [ build ]
+    # needs: [ build ]
     uses: ./.github/workflows/lks-pull-image.yaml
     with:
       runner-name: node1
@@ -70,7 +70,7 @@ jobs:
   node2:
     name: Pulling image on node2
     secrets: inherit
-    needs: [ build ]
+    # needs: [ build ]
     uses: ./.github/workflows/lks-pull-image.yaml
     with:
       runner-name: node2
@@ -78,7 +78,7 @@ jobs:
 
   master:
     name: Pulling image on master
-    needs: [ build ]
+    # needs: [ build ]
     runs-on: master
     environment: dev
     steps:
