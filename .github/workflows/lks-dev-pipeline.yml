@@ -60,6 +60,8 @@ jobs:
   
   node1:
     name: TEST
+    environment: dev
+    runs-on: node1
     steps:
     - name: HELLO WORLD
       run: |
