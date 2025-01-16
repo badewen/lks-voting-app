@@ -2,7 +2,7 @@ name: Build dev image
 
 on:
   push:
-    branches:
+    branches: 
       - "dev"
 
 env:
