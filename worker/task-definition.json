@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:739275459664:task-definition/lks-worker-container:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:739275459664:task-definition/lks-td-worker:1",
     "containerDefinitions": [
         {
             "name": "lks-worker-container",
@@ -15,7 +15,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/lks-worker-container",
+                    "awslogs-group": "/ecs/lks-td-worker",
                     "mode": "non-blocking",
                     "awslogs-create-group": "true",
                     "max-buffer-size": "25m",
@@ -27,7 +27,7 @@
             "systemControls": []
         }
     ],
-    "family": "lks-worker-container",
+    "family": "lks-td-worker",
     "executionRoleArn": "arn:aws:iam::739275459664:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
@@ -76,7 +76,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-01-16T08:33:58.176Z",
+    "registeredAt": "2025-01-17T04:05:12.672Z",
     "registeredBy": "arn:aws:iam::739275459664:root",
     "enableFaultInjection": false,
     "tags": []
