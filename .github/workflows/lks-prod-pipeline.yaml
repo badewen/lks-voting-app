@@ -98,14 +98,14 @@ jobs:
 
     - name: Fill in the new image ID in the Amazon ECS task definition (Worker)
       id: task-def-worker
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      uses: aws-actions/amazon-ecs-render-task-definition@v2
       with:
         task-definition: ${{ env.WORKER_TASK_DEFINITION }}
         container-name: ${{ env.WORKER_CONTAINER_NAME }}
         image: ${{ steps.set-vars.outputs.worker_image }}
 
     - name: Deploy Amazon ECS task definition Worker
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
         task-definition: ${{ steps.task-def-worker.outputs.task-definition }}
         service: ${{ env.ECS_SERVICE_WORKER }}
@@ -150,14 +150,14 @@ jobs:
 
     - name: Fill in the new image ID in the Amazon ECS task definition (Worker)
       id: task-def-worker
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      uses: aws-actions/amazon-ecs-render-task-definition@v2
       with:
         task-definition: ${{ env.WORKER_TASK_DEFINITION }}
         container-name: ${{ env.WORKER_CONTAINER_NAME }}
         image: ${{ steps.set-vars.outputs.worker_image }}
 
     - name: Deploy Amazon ECS task definition Worker
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
         task-definition: ${{ steps.task-def-worker.outputs.task-definition }}
         service: ${{ env.ECS_SERVICE_WORKER }}
@@ -202,14 +202,14 @@ jobs:
 
     - name: Fill in the new image ID in the Amazon ECS task definition (Worker)
       id: task-def-worker
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      uses: aws-actions/amazon-ecs-render-task-definition@v2
       with:
         task-definition: ${{ env.WORKER_TASK_DEFINITION }}
         container-name: ${{ env.WORKER_CONTAINER_NAME }}
         image: ${{ steps.set-vars.outputs.worker_image }}
 
     - name: Deploy Amazon ECS task definition Worker
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v2
       with:
         task-definition: ${{ steps.task-def-worker.outputs.task-definition }}
         service: ${{ env.ECS_SERVICE_WORKER }}
