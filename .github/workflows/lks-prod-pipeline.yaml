@@ -67,7 +67,7 @@ jobs:
     environment: prod
 
     env:
-      WORKER_TASK_DEFINITION: lks-td-vote
+      WORKER_TASK_DEFINITION: ./vote/task-definition.js
       ECS_SERVICE_WORKER: lks-vote-service
       WORKER_CONTAINER_NAME: lks-vote-container
       ECS_CLUSTER: lks-voting-cluster
@@ -119,7 +119,7 @@ jobs:
     environment: prod
 
     env:
-      WORKER_TASK_DEFINITION: lks-td-result
+      WORKER_TASK_DEFINITION: ./result/task-definition.js
       ECS_SERVICE_WORKER: lks-result-service
       WORKER_CONTAINER_NAME: lks-result-container
       ECS_CLUSTER: lks-result-cluster
@@ -171,7 +171,7 @@ jobs:
     environment: prod
 
     env:
-      WORKER_TASK_DEFINITION: lks-td-worker
+      WORKER_TASK_DEFINITION: ./worker/task-definition.js
       ECS_SERVICE_WORKER: lks-worker-service
       WORKER_CONTAINER_NAME: lks-worker-container
       ECS_CLUSTER: lks-worker-cluster
