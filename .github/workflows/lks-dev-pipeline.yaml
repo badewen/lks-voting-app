@@ -46,13 +46,13 @@ jobs:
         VOTE_IMAGE_TAG: vote-${{ env.ENV }}-latest
         RESULT_IMAGE_TAG: result-${{ env.ENV }}-latest
       run: |
-        sudo docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG --build-arg copy_or_mount="copy" -f worker/Dockerfile ./worker
-        sudo docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$VOTE_IMAGE_TAG --build-arg copy_or_mount="copy" -f vote/Dockerfile ./vote
-        sudo docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$RESULT_IMAGE_TAG --build-arg copy_or_mount="copy" -f result/Dockerfile ./result
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG --build-arg copy_or_mount="copy" -f worker/Dockerfile ./worker
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$VOTE_IMAGE_TAG --build-arg copy_or_mount="copy" -f vote/Dockerfile ./vote
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$RESULT_IMAGE_TAG --build-arg copy_or_mount="copy" -f result/Dockerfile ./result
         ls -la
-        sudo docker push $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG
-        sudo docker push $ECR_REGISTRY/$ECR_REPOSITORY:$VOTE_IMAGE_TAG
-        sudo docker push $ECR_REGISTRY/$ECR_REPOSITORY:$RESULT_IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$VOTE_IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$RESULT_IMAGE_TAG
         echo "::set-output name=worker_image::$ECR_REGISTRY/$ECR_REPOSITORY:$WORKER_IMAGE_TAG"
         echo "::set-output name=worker_image::$ECR_REGISTRY/$ECR_REPOSITORY:$VOTE_IMAGE_TAG"
         echo "::set-output name=worker_image::$ECR_REGISTRY/$ECR_REPOSITORY:$RESULT_IMAGE_TAG"
