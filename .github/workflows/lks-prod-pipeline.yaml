@@ -122,7 +122,7 @@ jobs:
       WORKER_TASK_DEFINITION: ./result/task-definition.json
       ECS_SERVICE_WORKER: lks-result-service
       WORKER_CONTAINER_NAME: lks-result-container
-      ECS_CLUSTER: lks-result-cluster
+      ECS_CLUSTER: lks-voting-cluster
 
     steps:
     - name: Checkout
@@ -174,7 +174,7 @@ jobs:
       WORKER_TASK_DEFINITION: ./worker/task-definition.json
       ECS_SERVICE_WORKER: lks-worker-service
       WORKER_CONTAINER_NAME: lks-worker-container
-      ECS_CLUSTER: lks-worker-cluster
+      ECS_CLUSTER: lks-voting-cluster
 
     steps:
     - name: Checkout
