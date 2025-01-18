@@ -1,17 +1,23 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:739275459664:task-definition/lks-td-vote:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:739275459664:task-definition/lks-td-vote:4",
     "containerDefinitions": [
         {
             "name": "lks-vote-container",
-            "image": "739275459664.dkr.ecr.us-east-1.amazonaws.com/lks-voting-image:vote-dev-latest",
+            "image": "739275459664.dkr.ecr.us-east-1.amazonaws.com/lks-voting-image:vote-prod-latest",
             "cpu": 0,
-            "portMappings": [],
+            "portMappings": [
+                {
+                    "name": "lks-vote-container-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
             "essential": true,
             "environment": [],
-            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": [],
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
@@ -30,7 +36,7 @@
     "family": "lks-td-vote",
     "executionRoleArn": "arn:aws:iam::739275459664:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 4,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -76,7 +82,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-01-16T08:15:43.215Z",
+    "registeredAt": "2025-01-18T10:34:56.858Z",
     "registeredBy": "arn:aws:iam::739275459664:root",
     "tags": []
 }
