@@ -190,6 +190,6 @@ jobs:
           docker node ls
           docker service ls
           docker stack ls
-          docker stack rm stackdemo
+          docker stack rm vote
           sleep 30
-          docker stack deploy --compose-file docker-stack.yml stackdemo 
+          docker stack deploy --compose-file docker-stack.yml vote 
