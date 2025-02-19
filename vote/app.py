@@ -22,7 +22,7 @@ def get_redis():
     return g.redis
 
 @app.route("/", methods=['POST','GET'])
-def hello():
+def hello(): 
     # voter_id = request.cookies.get('voter_id')
     # if not voter_id:
     #     voter_id = "1234"
