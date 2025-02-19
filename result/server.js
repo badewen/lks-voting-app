@@ -20,7 +20,7 @@ io.on('connection', function (socket) {
 var pool = new Pool({
   connectionString: 'postgres://postgres:LKSNCC2024@lks-rds.cxkioes82mbg.us-east-1.rds.amazonaws.com:5432/admin'
 });
- 
+  
 async.retry(
   {times: 1000, interval: 1000},
   function(callback) {
