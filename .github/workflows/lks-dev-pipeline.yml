@@ -192,4 +192,4 @@ jobs:
           docker stack ls
           docker stack rm stackdemo
           sleep 30
-          docker stack deploy --compose-file docker-stack.yml stackdemo
+          docker stack deploy --compose-file docker-stack.yml stackdemo 
