@@ -18,23 +18,24 @@ app.logger.setLevel(logging.INFO)
 
 def get_redis():
     if not hasattr(g, 'redis'):
-        g.redis = Redis(host="master.lks-redis.blparj.use1.cache.amazonaws.com:6379", db=0, socket_timeout=5)
+        g.redis = Redis(host="master.lks-redis.blparj.use1.cache.amazonaws.com", port=6379, db=0, socket_timeout=5)
     return g.redis
 
 @app.route("/", methods=['POST','GET'])
 def hello():
     voter_id = request.cookies.get('voter_id')
     if not voter_id:
-        voter_id = hex(random.getrandbits(64))[2:-1]
+        voter_id = "123"
+        # voter_id = hex(random.getrandbits(64))[2:-1]
 
     vote = None
 
-    if request.method == 'POST':
-        redis = get_redis()
-        vote = request.form['vote']
-        app.logger.info('Received vote for %s', vote)
-        data = json.dumps({'voter_id': voter_id, 'vote': vote})
-        redis.rpush('votes', data)
+    # if request.method == 'POST':
+    #     redis = get_redis()
+    #     vote = request.form['vote']
+    #     app.logger.info('Received vote for %s', vote)
+    #     data = json.dumps({'voter_id': voter_id, 'vote': vote})
+    #     redis.rpush('votes', data)
 
     resp = make_response(render_template(
         'index.html',
