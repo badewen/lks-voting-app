@@ -6,10 +6,7 @@ on:
       - "dev"
     paths:
       - .github/workflows/lks-dev-pipeline.yaml
-      - "result/**"
-      - "seed-data/**"
-      - "vote/**"
-      - "worker/**"
+      - "**/**"
 
 env:
   AWS_REGION: us-east-1                 
