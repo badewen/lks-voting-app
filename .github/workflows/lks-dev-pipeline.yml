@@ -143,7 +143,7 @@ jobs:
 
   master:
     name: Pull Image on master
-    runs-on: node1
+    runs-on: master
     needs: build
     environment: Development
     steps:
