@@ -28,7 +28,7 @@ services:
     networks:
       - frontend
     deploy:
-      replicas: 3
+      replicas: 1
 
   result:
     image: 739275459664.dkr.ecr.us-east-1.amazonaws.com/lks-voting-image:result-dev-latest
@@ -37,7 +37,7 @@ services:
     networks:
       - backend
     deploy:
-      replicas: 3
+      replicas: 1
 
   worker:
     image: 739275459664.dkr.ecr.us-east-1.amazonaws.com/lks-voting-image:worker-dev-latest
@@ -45,7 +45,7 @@ services:
       - frontend
       - backend
     deploy:
-      replicas: 3
+      replicas: 1
 
 networks:
   frontend:
