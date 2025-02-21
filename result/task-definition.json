@@ -80,7 +80,7 @@
         "FARGATE"
     ],
     "requiresCompatibilities": [
-        "FARGATE"
+        "FARGATE" 
     ],
     "cpu": "1024",
     "memory": "3072",
