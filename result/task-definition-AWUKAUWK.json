@@ -4,7 +4,7 @@
         {
             "name": "lks-result-container",
             "image": "739275459664.dkr.ecr.us-east-1.amazonaws.com/lks-voting-image:result-prod-latest",
-            "cpu": 0,
+            "cpu": 0, 
             "portMappings": [
                 {
                     "name": "lks-result-container-80-tcp",
