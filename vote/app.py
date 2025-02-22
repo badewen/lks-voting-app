@@ -16,7 +16,7 @@ gunicorn_error_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers.extend(gunicorn_error_logger.handlers)
 app.logger.setLevel(logging.INFO)
 
-def get_redis():
+def get_redis(): 
     if not hasattr(g, 'redis'):
         g.redis = Redis(host="lks-redis-001.blparj.0001.use1.cache.amazonaws.com", port=6379, db=0, socket_timeout=5)
     return g.redis

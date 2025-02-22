@@ -1,13 +1,13 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:739275459664:task-definition/lks-td-result:9",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:739275459664:task-definition/lks-td-result:11",
     "containerDefinitions": [
         {
-            "name": "lks-vote-result",
-            "image": "739275459664.dkr.ecr.us-east-1.amazonaws.com/lks-voting-image:result-dev-latest",
+            "name": "lks-result-container",
+            "image": "739275459664.dkr.ecr.us-east-1.amazonaws.com/lks-voting-image:result-prod-latest",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "lks-vote-result-80-tcp",
+                    "name": "lks-result-container-80-tcp",
                     "containerPort": 80,
                     "hostPort": 80,
                     "protocol": "tcp",
@@ -39,7 +39,7 @@
     "taskRoleArn": "arn:aws:iam::739275459664:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::739275459664:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 9,
+    "revision": 11,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -88,8 +88,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-02-19T04:58:39.277Z",
+    "registeredAt": "2025-02-21T01:47:49.002Z",
     "registeredBy": "arn:aws:iam::739275459664:root",
-    "enableFaultInjection": false,
     "tags": []
 }
